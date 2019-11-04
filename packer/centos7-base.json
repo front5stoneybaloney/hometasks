@@ -1,0 +1,69 @@
+{
+  "builders":
+  [
+    {
+      "type": "qemu",
+      "accelerator": "kvm",
+      "headless": true,
+      "qemuargs": [
+        [ "-m", "512M" ]
+      ],
+      "qemu_binary": "/usr/libexec/qemu-kvm",
+      "disk_interface": "virtio",
+      "disk_size": 5000,
+      "format": "qcow2",
+      "net_device": "virtio-net",
+
+      "iso_url": "https://mirrors.edge.kernel.org/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso",
+      "iso_checksum": "9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
+      "iso_checksum_type": "sha256",
+
+      "vm_name": "testserver3",
+      "output_directory": "centos7-base-img",
+
+      "http_directory": "docroot",
+      "http_port_min": 10082,
+      "http_port_max": 10089,
+
+      "ssh_host_port_min": 2222,
+      "ssh_host_port_max": 2229,
+
+      "ssh_username": "root",
+      "ssh_password": "hw8DbWVdRjL6qPsN75BJtr",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "1200s",
+
+      "boot_wait": "40s",
+      "boot_command": [
+        "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/c7-kvm-ks.cfg<enter><wait>"
+      ],
+
+      "shutdown_command": "shutdown -P now"
+    }
+  ],
+
+  "provisioners":
+  [
+    {
+      "type": "file",
+      "source": "/home/packer-image/updatemotd.py",
+      "destination": "/home/updatemotd.py"
+    },
+    {
+      "type": "file",
+      "source": "/home/packer-image/pythontask.service",
+      "destination": "/etc/systemd/system/pythontask.service"
+    },
+    {
+      "type": "shell",
+      "pause_before": "5s",
+      "inline": [
+	"yum -y update",
+        "yum -y install wget",
+        "yum -y install nano",
+        "yum clean all"
+      ]
+    }
+  ]
+}
+

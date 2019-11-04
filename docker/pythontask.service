@@ -1,0 +1,9 @@
+[Unit]
+# Human readable name of the unit
+Description=Python Task Service
+
+[Service]
+# Command to execute when the service is started
+ExecStart=/usr/bin/python /home/updatemotd.py
+
+Environment=PYTHONUNBUFFERED=1
