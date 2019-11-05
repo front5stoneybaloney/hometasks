@@ -1,4 +1,11 @@
-[Timer]
-OnBootSec=5min
-OnUnitActiveSec=1d
+[Unit]
+Description= Timer config for the python service
 
+[Timer]
+OnBootSec=1min
+OnActiveSec=1min
+OnUnitActiveSec=1d
+Persistent=true
+
+[Install]
+WantedBy=basic.target
