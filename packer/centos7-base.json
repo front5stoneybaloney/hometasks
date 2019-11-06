@@ -10,7 +10,7 @@
       ],
       "qemu_binary": "/usr/libexec/qemu-kvm",
       "disk_interface": "virtio",
-      "disk_size": 5000,
+      "disk_size": 8000,
       "format": "qcow2",
       "net_device": "virtio-net",
 
@@ -31,11 +31,11 @@
       "ssh_username": "root",
       "ssh_password": "hw8DbWVdRjL6qPsN75BJtr",
       "ssh_port": 22,
-      "ssh_wait_timeout": "1200s",
+      "ssh_wait_timeout": "1800s",
 
       "boot_wait": "40s",
       "boot_command": [
-        "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/c7-kvm-ks.cfg<enter><wait>"
+        "<up><wait><tab><wait> text ks=http://192.168.122.1/c7-kvm-ks.cfg<enter><wait>"
       ],
 
       "shutdown_command": "shutdown -P now"
@@ -66,4 +66,3 @@
     }
   ]
 }
-
