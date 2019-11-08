@@ -21,7 +21,13 @@ run a container with it
 ```docker run -itd --privileged --name=chooseyourname nameofimage```
 
 access console on container  
-```docker exec -it chooseyourname /bin/bash```
+```docker exec -it chooseyourname /bin/bash```  
+
+Run the service  
+```systemctl start pythontask.service```  
+
+Check if it worked  
+```cat /etc/motd```  
 
 ***
 
@@ -42,8 +48,10 @@ buid the image
 to use the newly created qcow2 image do something like  
 ```virt-customize -a /home/packer-image/centos7-base-img-server2a --root-password password:usesamepasswordasksfile --uninstall cloud-init```
 
-and then actually create a vm using 
+and then actually create a vm using  
 ```virt-install --name testserver2a --memory 512 --vcpus 1 --os-type linux --os-variant centos7.0 --disk '/home/packer-image/centos7-base-img-server2a/testserver2a' --import --network network=default --graphics none```
+
+
 
 ***
 
