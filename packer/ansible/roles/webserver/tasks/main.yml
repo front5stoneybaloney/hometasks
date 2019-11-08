@@ -1,0 +1,35 @@
+- name: enalbe epel-repo
+  yum: 
+    name: epel-release
+    state: latest
+
+- name: Install nginx
+  yum:
+    name: nginx
+    state: latest
+- name: Copy nginx files
+  copy:
+    src: "{{ role_path }}/files/nginx.conf"
+    dest: /etc/nginx/nginx.conf
+    mode: 0644
+  notify: Restart Nginx
+- name: Enable nginx
+  shell: "systemctl enable nginx.service"
+  become: yes
+
+- name: Start pythontask service
+  shell: "systemctl start pythontask.service"
+  become: yes
+
+- name: Enable pythontask service
+  shell: "systemctl enable pythontask.service"
+  become: yes
+
+- name: Start pythontask timer
+  shell: "systemctl start pythontask.timer"
+  become: yes
+
+- name: Enable pythontask timer
+  shell: "systemctl enable pythontask.timer"
+  become: yes
+

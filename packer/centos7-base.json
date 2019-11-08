@@ -18,10 +18,9 @@
       "iso_checksum": "9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
       "iso_checksum_type": "sha256",
 
-      "vm_name": "testserver3",
-      "output_directory": "centos7-base-img",
+      "vm_name": "testserver2a",
+      "output_directory": "centos7-base-img-server2a",
 
-      "http_directory": "docroot",
       "http_port_min": 10082,
       "http_port_max": 10089,
 
@@ -46,13 +45,18 @@
   [
     {
       "type": "file",
-      "source": "/home/packer-image/updatemotd.py",
+      "source": "updatemotd.py",
       "destination": "/home/updatemotd.py"
     },
     {
       "type": "file",
-      "source": "/home/packer-image/pythontask.service",
+      "source": "pythontask.service",
       "destination": "/etc/systemd/system/pythontask.service"
+    },
+    {
+      "type": "file",
+      "source": "pythontask.timer",
+      "destination": "/etc/systemd/system/pythontask.timer"
     },
     {
       "type": "shell",
@@ -61,8 +65,19 @@
 	"yum -y update",
         "yum -y install wget",
         "yum -y install nano",
-        "yum clean all"
-      ]
-    }
+        "yum clean all",
+	"yum -y install epel-release",
+	"yum -y install ansible",
+	"yum install -y python-pip",
+	"pip install --upgrade --force setuptools",
+	"pip install --upgrade --force pip"
+                ]
+    },
+    {
+      "playbook_file": "ansible/nginxinstall.yml",
+      "role_paths": [
+        "ansible/roles/webserver"
+      ],
+      "type": "ansible-local"    }
   ]
 }
