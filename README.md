@@ -8,6 +8,13 @@ The service is running a python file named updatemotd.py
 There is a service.timer in place which runs the service once a day and 1 minute after booting.
 
 ***
+**REST Api using flask/python**  
+You can get the info using a curl request like  
+```curl http://178.62.9.210:5000/info```  
+There is a sysmted service in place to run the api file apigetinfo.py  
+Keep in mind the host IP is hardcoded.  
+
+***
 
 **DOCKER**  
 Tested using  
