@@ -1,0 +1,10 @@
+---
+- name: Python service enable
+  hosts: 127.0.0.1
+  roles:
+    - pythontask
+
+- name: Api service enable
+  hosts: 127.0.0.1
+  roles:
+    - apigetinfo

@@ -1,0 +1,4 @@
+---
+- name: Restart pythontask  
+  service: name=pythontask  state=restarted  
+  become: yes

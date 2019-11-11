@@ -1,0 +1,20 @@
+- name: Copy api service file
+  copy:
+    src: "{{ role_path }}/files/apigetinfo.service"
+    dest: /etc/systemd/system/apigetinfo.service
+    mode: 0644
+
+- name: Copy api file 
+  copy:
+    src: "{{ role_path }}/files/apigetinfo.py"
+    dest: /home/apigetinfo.py
+    mode: 0644
+
+- name: Enable api service
+  shell: "systemctl enable apigetinfo.service"
+  become: yes
+
+- name: Start api service
+  shell: "systemctl start apigetinfo.service"
+  become: yes
+
