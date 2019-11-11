@@ -70,7 +70,9 @@
 	"yum -y install ansible",
 	"yum install -y python-pip",
 	"pip install --upgrade --force setuptools",
-	"pip install --upgrade --force pip"
+	"pip install --upgrade --force pip",
+	"pip install flask",
+	"pip install netifaces"
                 ]
     },
     {
