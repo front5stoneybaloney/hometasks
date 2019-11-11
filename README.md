@@ -58,6 +58,12 @@ to use the newly created qcow2 image do something like
 and then actually create a vm using  
 ```virt-install --name testserver2a --memory 512 --vcpus 1 --os-type linux --os-variant centos7.0 --disk '/home/packer-image/centos7-base-img-server2a/testserver2a' --import --network network=default --graphics none```
 
+**Ansible**
+
+There are two roles present at the moment. 
+
+One is adding the pythontask systemd service while the other is instating the Api and the relative service it runs under. 
+Some of the shell commands are executed in the kickstarter file under ```"provisioners":``` ```"type": "shell"``` while others from within Ansible just to show 2 different ways of achieving the same goal. Same goes for adding files - some using  ```"provisioners":``` ```"type": "file"``` while others via ansible.
 
 
 ***
