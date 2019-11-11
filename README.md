@@ -53,10 +53,10 @@ buid the image
 ```PACKER_LOG=1 /usr/local/bin/packer build centos7-base.json```
 
 to use the newly created qcow2 image do something like  
-```virt-customize -a /home/packer-image/centos7-base-img-server2a --root-password password:usesamepasswordasksfile --uninstall cloud-init```
+```virt-customize -a /home/packer-image/centos7-base-img-server4a/testserver4a --root-password password:usesamepasswordasksfile --uninstall cloud-init```
 
 and then actually create a vm using  
-```virt-install --name testserver2a --memory 512 --vcpus 1 --os-type linux --os-variant centos7.0 --disk '/home/packer-image/centos7-base-img-server2a/testserver2a' --import --network network=default --graphics none```
+```virt-install --name testserver2a --memory 512 --vcpus 1 --os-type linux --os-variant centos7.0 --disk '/home/packer-image/centos7-base-img-server4a/testserver4a' --import --network network=default --graphics none```
 
 **Ansible**
 
