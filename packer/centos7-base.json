@@ -18,8 +18,8 @@
       "iso_checksum": "9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
       "iso_checksum_type": "sha256",
 
-      "vm_name": "testserver2a",
-      "output_directory": "centos7-base-img-server2a",
+      "vm_name": "testserver4a",
+      "output_directory": "centos7-base-img-server4a",
 
       "http_port_min": 10082,
       "http_port_max": 10089,
@@ -74,9 +74,10 @@
                 ]
     },
     {
-      "playbook_file": "ansible/nginxinstall.yml",
+      "playbook_file": "ansible/apigetinfo.yml",
       "role_paths": [
-        "ansible/roles/webserver"
+        "ansible/roles/pythontask",
+        "ansible/roles/apigetinfo"
       ],
       "type": "ansible-local"    }
   ]
