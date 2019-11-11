@@ -1,0 +1,16 @@
+[Unit]
+# Human readable name of the unit
+Description=Python Task Service
+
+[Service]
+Type=simple
+Restart=always
+RuntimeMaxSec=60
+# Command to execute when the service is started
+ExecStart=/usr/bin/python2.7 /home/apigetinfo.py
+
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
+
