@@ -11,3 +11,6 @@ ExecStart=/usr/bin/python2.7 /home/apigetinfo.py
 
 Environment=PYTHONUNBUFFERED=1
 
+[Install]
+WantedBy=multi-user.target
+
