@@ -71,7 +71,7 @@ Some of the shell commands are executed in the kickstarter file under ```"provis
 **Prometheus and Grafana**  
 Monitoring is setup and the dashboard can be accessed here (you will need login credentials)  
 
-http://178.128.39.165:3000/d/1PGBpR1Zz/pythontask-service?orgId=1&from=1572993245396&to=1573036445396&refresh=30s  
+http://178.128.39.165:3000/d/1PGBpR1Zz/pythontask-service?orgId=1&from=now-1h&to=now&refresh=10s
 
 http://178.128.39.165:9090/targets  
 
