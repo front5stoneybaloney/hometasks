@@ -8,6 +8,13 @@ The service is running a python file named updatemotd.py
 There is a service.timer in place which runs the service once a day and 1 minute after booting.
 
 ***
+**REST Api using flask/python**  
+You can get the info using a curl request like  
+```curl http://178.62.9.210:5000/info```  
+There is a sysmted service in place to run the api file apigetinfo.py  
+Keep in mind the host IP is hardcoded.  
+
+***
 
 **DOCKER**  
 Tested using  
@@ -46,11 +53,17 @@ buid the image
 ```PACKER_LOG=1 /usr/local/bin/packer build centos7-base.json```
 
 to use the newly created qcow2 image do something like  
-```virt-customize -a /home/packer-image/centos7-base-img-server2a --root-password password:usesamepasswordasksfile --uninstall cloud-init```
+```virt-customize -a /home/packer-image/centos7-base-img-server4a/testserver4a --root-password password:usesamepasswordasksfile --uninstall cloud-init```
 
 and then actually create a vm using  
-```virt-install --name testserver2a --memory 512 --vcpus 1 --os-type linux --os-variant centos7.0 --disk '/home/packer-image/centos7-base-img-server2a/testserver2a' --import --network network=default --graphics none```
+```virt-install --name testserver2a --memory 512 --vcpus 1 --os-type linux --os-variant centos7.0 --disk '/home/packer-image/centos7-base-img-server4a/testserver4a' --import --network network=default --graphics none```
 
+**Ansible**
+
+There are two roles present at the moment. 
+
+One is adding the pythontask systemd service while the other is instating the Api and the relative service it runs under. 
+Some of the shell commands are executed in the kickstarter file under ```"provisioners":``` ```"type": "shell"``` while others from within Ansible just to show 2 different ways of achieving the same goal. Same goes for adding files - some using  ```"provisioners":``` ```"type": "file"``` while others via ansible.
 
 
 ***
