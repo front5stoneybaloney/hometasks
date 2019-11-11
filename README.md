@@ -12,7 +12,7 @@ There is a service.timer in place which runs the service once a day and 1 minute
 You can get the info using a curl request like  
 ```curl http://178.62.9.210:5000/info```  
 There is a sysmted service in place to run the api file apigetinfo.py  
-Keep in mind the host IP is hardcoded.  
+Keep in mind the host IP is hardcoded and currently set to the localhost one 127.0.0.1
 
 ***
 
@@ -30,10 +30,15 @@ run a container with it
 access console on container  
 ```docker exec -it chooseyourname /bin/bash```  
 
-Run the service  
+You will then have to start and enable the services as I haven't found a way to do that in the Dockerfile during the build process.  
 ```systemctl start pythontask.service```  
+```systemctl start pythontask.timer```
+```systemctl start apigetinfo.service```
+```systemctl enable apigetinfo.service```
+```systemctl enable pythontask.service```  
+```systemctl enable pythontask.timer```
 
-Check if it worked  
+Check if everything is working  
 ```cat /etc/motd```  
 
 ***
