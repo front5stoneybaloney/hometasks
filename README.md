@@ -32,14 +32,16 @@ access console on container
 
 You will then have to start and enable the services as I haven't found a way to do that in the Dockerfile during the build process.  
 ```systemctl start pythontask.service```  
-```systemctl start pythontask.timer```
-```systemctl start apigetinfo.service```
-```systemctl enable apigetinfo.service```
+```systemctl start pythontask.timer```  
+```systemctl start apigetinfo.service```  
+```systemctl enable apigetinfo.service```  
 ```systemctl enable pythontask.service```  
 ```systemctl enable pythontask.timer```
 
 Check if everything is working  
 ```cat /etc/motd```  
+```systemctl status pythontask.timer```  
+```systemctl status apigetinfo.service```  
 
 ***
 
