@@ -3,11 +3,14 @@ import argparse
 import socket
 import hashlib
 from datetime import datetime
+import netifaces as ni
 
 now = datetime.now()
 current_day = now.strftime("%d-%m-%Y" )
 current_time = now.strftime("%H:%M:%S")
-ip_address =socket.gethostbyname(socket.gethostname())
+#ip_address =socket.gethostbyname(socket.gethostname())
+ni.ifaddresses('enxe4b97ab20770')
+ip_address = ni.ifaddresses('enxe4b97ab20770')[ni.AF_INET][0]['addr']
 
 # MD5  Assumes the default UTF-8
 hash_object = hashlib.md5(current_day.encode())
